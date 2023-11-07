@@ -60,6 +60,58 @@ public class HashTableTest extends TestCase {
     }
     
     /**
+     * Test for resize
+     * Fill hashtable to 50%
+     * Double size of hashtable and rehash
+     */
+    public void testResizeSimple() {
+    	Hash table = new Hash(4);
+        Record record1 = new Record("record1", null);
+        Record record2 = new Record("record2", null);
+        Record record3 = new Record("record3", null);
+        Record record4 = new Record("record4", null);
+        
+        //capacity = 4
+        //threshold = 2
+        assertTrue(table.insert(record1));
+        assertTrue(table.insert(record2));
+        //count = 2 
+        //count == threshold so resize
+        assertTrue(table.insert(record3));      
+    }
+    
+//    /**
+//     * Test for resize with tombstones
+//     * Fill hashtable to 50%
+//     * Double size of hashtable and rehash
+//     */
+//    public void testResizeTombstone() {
+//    	Hash table = new Hash(8);
+//        Record record1 = new Record("record1", null);
+//        Record record2 = new Record("record2", null);
+//        Record record3 = new Record("record3", null);
+//        Record record4 = new Record("record4", null);
+//        Record record5 = new Record("record5", null);
+//        
+//        //capacity = 8
+//        //threshold = 4
+//        assertTrue(table.insert(record1));
+//        assertTrue(table.insert(record2));
+//        
+//        //delete --> tombstones
+//        assertEquals(table.delete(record2.getKey()), record2);
+//        assertEquals(table.delete(record1.getKey()), record1);
+//        //count = 0 
+//        assertTrue(table.insert(record3));     
+//        assertTrue(table.insert(record4));
+//        assertTrue(table.insert(record1));
+//        assertTrue(table.insert(record2));
+//        //count=4 == threshold so resize
+//        assertTrue(table.insert(record5));
+//        
+//    }
+    
+    /**
      * Test Deleting and Inserting New Records
      * 1. Insert Records
      * 2. Delete Records
@@ -91,5 +143,7 @@ public class HashTableTest extends TestCase {
 //        assertTrue(table.insert(record5));
 //        assertEquals(record5, table.search(record5.getKey()));
 //    }
+    
+    
     
 }
