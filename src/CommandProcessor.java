@@ -38,55 +38,42 @@ public class CommandProcessor {
             // Input scanner
             Scanner sc = new Scanner(new File(filename));
             // Buffer to read in lines
-            String[] line;
+            String[] param;
             // Isolate the command
-            String cmd;
-            // Isolate the ID
-            String id = null;
+            String cmd[] = new String[1];
 
             // Scan until EOF
             while (sc.hasNextLine()) {
-
-                line = sc.nextLine().trim().split("\\s+");
-                cmd = line[0].trim();
-                // If there was an ID associated with the command
-                if (line.length > 1) {
-                    id = line[1].trim();
-                }
-
+                cmd = sc.nextLine().trim().split("\\s+", 2);
                 // Skips the random newlines in the input file
-                if (!cmd.isEmpty()) {
-                    switch (cmd) {
-                        case "insert":
-                            // Array to store input data
-                            // line[1];
-                            break;
-                        case "remove":
-                            switch (line[1].trim()) {
-                                case "artist":
-                                    break;
-                                case "song":
-                                    break;
-                                default:
-                                    break;
-                            }
-                            break;
-                        case "print":
-                            switch (line[1].trim()) {
-                                case "artist":
-                                    break;
-                                case "song":
-                                    break;
-                                case "graph":
-                                    break;
-                                default:
-                                    break;
-                            }
-                        default:
-                            System.out.println("Invalid command");
-                    }
+                // if (!cmd[0].isEmpty()) {
+                // System.out.print(cmd[0] + " ");
+                switch (cmd[0]) {
+                    case "insert":
+                        param = cmd[1].trim().split("<SEP>");
+                        controller.insert(cmd[1]);
+                        break;
+
+                    case "remove":
+                        param = cmd[1].trim().split("\\s+", 2);
+                        controller.remove(param[0], param[1]);
+                        break;
+
+                    case "print":
+                        param = cmd[1].trim().split("\\s+");
+                        switch (param[0]) {
+                            case "graph":
+                                System.out.println(param[0]);
+                                break;
+                            default:
+                                controller.printCount(param[0]);
+                        }
+                    default:
+                        // System.out.println("Invalid command");
+                        break;
                 }
             }
+            // }
             sc.close();
 
         }

@@ -76,11 +76,14 @@ public class Hash {
         int index = home;
 
         while (table[index] != null) {
-            if (table[index].getKey().equals(key)) {
-                Record record = table[index];
-                table[index] = TOMBSTONE;
-                count--;
-                return record;
+            if (table[index].getKey() != null) {
+                if (table[index].getKey().equals(key)) {
+                    Record record = table[index];
+                    table[index] = TOMBSTONE;
+                    count--;
+                    return record;
+                }
+
             }
             step++;
             index = (home + q(step)) % capacity;
@@ -97,19 +100,18 @@ public class Hash {
 
         for (Record value : table) {
             if (value != null && value != TOMBSTONE) {
-                int home = h(value.getKey(), count);
+                int home = h(value.getKey(), capacity);
                 int step = 0;
                 int index = home;
 
                 while (newTable[index] != null) {
                     step++;
-                    index = (home + q(step) % count);
+                    index = (home + q(step) % capacity);
                 }
                 newTable[index] = value;
             }
         }
         table = newTable;
-        System.out.printf("Song hash table size doubled.%n");
     }
 
 
@@ -156,5 +158,25 @@ public class Hash {
      */
     public static int q(int i) {
         return i * i;
+    }
+
+
+    public int getCount() {
+        return count;
+    }
+
+
+    public void printContents() {
+        for (int i = 0; i < capacity; i++) {
+            if (table[i] != null) {
+                if (table[i].getKey() == null) {
+                    System.out.printf("%d: TOMBSTONE%n", i);
+                }
+                else {
+                    System.out.printf("%d: |%s|%n", i, table[i].getKey());
+                }
+            }
+
+        }
     }
 }
