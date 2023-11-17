@@ -1,14 +1,36 @@
-
+/**
+ * @author Xavier Akers
+ * 
+ * @version Last Updated 11-12-2023
+ * 
+ * @since 11-12-2023
+ * 
+ *        Handles Record and Graph Integration
+ * 
+ */
 public class Controller {
     private Hash songTable;
     private Hash artistTable;
 
+    /**
+     * Constructor
+     * 
+     * @param hashSize
+     *            Size of the Hash Tables
+     */
     public Controller(int hashSize) {
         songTable = new Hash(hashSize);
         artistTable = new Hash(hashSize);
     }
 
 
+    /**
+     * Parses the record and input into correct hash table
+     * 
+     * @param input
+     *            Literal String Input
+     * @return True if inserted successfully
+     */
     public boolean insert(String input) {
         String[] record = input.trim().split("<SEP>");
         String artist = record[0];
@@ -17,11 +39,20 @@ public class Controller {
         Record songRec = new Record(song, new GraphNode(-1));
 
         // Need to add check for duplicate
+        if (artistTable.getCount() == artistTable.getThreshold()) {
+            System.out.println("Artist hash table size doubled.");
+        }
         if (artistTable.insert(artistRec)) {
+
             System.out.printf("|%s| is added to the Artist database.%n",
                 artist);
         }
+
+        if (songTable.getCount() == songTable.getThreshold()) {
+            System.out.println("Song hash table size doubled.");
+        }
         if (songTable.insert(songRec)) {
+
             System.out.printf("|%s| is added to the Song database.%n", song);
         }
 
@@ -29,6 +60,15 @@ public class Controller {
     }
 
 
+    /**
+     * Removes the Record from the respective hash table
+     * 
+     * @param table
+     *            Hash Table to check
+     * @param param
+     *            Record to remove
+     * @return True if successfully removed from Hash table
+     */
     public boolean remove(String table, String param) {
         switch (table) {
             case "artist":
@@ -56,7 +96,13 @@ public class Controller {
     }
 
 
-    public boolean printCount(String table) {
+    /**
+     * Prints contents of respective hash table
+     * 
+     * @param table
+     *            Hash table to print
+     */
+    public void printCount(String table) {
         switch (table) {
             case "artist":
                 artistTable.printContents();
@@ -70,7 +116,5 @@ public class Controller {
             default:
                 break;
         }
-
-        return false;
     }
 }

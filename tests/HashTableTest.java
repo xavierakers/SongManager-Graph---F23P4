@@ -1,6 +1,17 @@
 import student.TestCase;
 
+/**
+ * 
+ * @author Xavier Akers
+ * @author Zoe Hite
+ * 
+ * @version Last Updated 11-5-2023
+ *          Direct hash table tests
+ */
 public class HashTableTest extends TestCase {
+    /**
+     * Simple hash table insertion
+     */
     public void testInsertAndSeach1() {
         Hash table = new Hash(4);
         Record record1 = new Record("record1", null);
@@ -73,8 +84,6 @@ public class HashTableTest extends TestCase {
         Record record1 = new Record("record1", null);
         Record record2 = new Record("record2", null);
         Record record3 = new Record("record3", null);
-        Record record4 = new Record("record4", null);
-
         // capacity = 4
         // threshold = 2
         assertTrue(table.insert(record1));
@@ -85,6 +94,9 @@ public class HashTableTest extends TestCase {
     }
 
 
+    /**
+     * Test deletions
+     */
     public void testDelete1() {
         Hash table = new Hash(8);
         Record record1 = new Record("A", null);

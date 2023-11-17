@@ -4,9 +4,9 @@ import java.util.Scanner;
 /**
  * @author Xavier Akers
  * 
- * @version Last Updated
+ * @version Last Updated 11-12-2023
  * 
- * @since 2023-09-21
+ * @since 11-12-2023
  * 
  *        A simple file parser
  * 
@@ -40,7 +40,7 @@ public class CommandProcessor {
             // Buffer to read in lines
             String[] param;
             // Isolate the command
-            String cmd[] = new String[1];
+            String[] cmd = new String[1];
 
             // Scan until EOF
             while (sc.hasNextLine()) {
@@ -68,6 +68,7 @@ public class CommandProcessor {
                             default:
                                 controller.printCount(param[0]);
                         }
+                        break;
                     default:
                         // System.out.println("Invalid command");
                         break;

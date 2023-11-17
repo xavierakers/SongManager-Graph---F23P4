@@ -3,7 +3,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import student.TestCase;
 
+/**
+ * @author Xavier Akers
+ * 
+ * @author Zoe Hite
+ * 
+ * @version Last Updated 2023-16-11
+ *          Temporary test for mutation coverage
+ */
 public class MasterTest extends TestCase {
+    /**
+     * Simple hash table insertion
+     */
     public void testInsertAndSeach1() {
         Hash table = new Hash(4);
         Record record1 = new Record("record1", null);
@@ -76,8 +87,6 @@ public class MasterTest extends TestCase {
         Record record1 = new Record("record1", null);
         Record record2 = new Record("record2", null);
         Record record3 = new Record("record3", null);
-        Record record4 = new Record("record4", null);
-
         // capacity = 4
         // threshold = 2
         assertTrue(table.insert(record1));
@@ -88,12 +97,46 @@ public class MasterTest extends TestCase {
     }
 
 
+    /**
+     * Test deletions
+     */
+    public void testDelete1() {
+        Hash table = new Hash(8);
+        Record record1 = new Record("A", null);
+        Record record2 = new Record("I", null);
+        Record record3 = new Record("Q", null);
+
+        assertTrue(table.insert(record1));
+        assertTrue(table.insert(record2));
+        assertTrue(table.insert(record3));
+        assertEquals(table.getCount(), 3);
+        table.printContents();
+
+        assertEquals(table.search(record1.getKey()), record1);
+        assertEquals(table.delete(record1.getKey()), record1);
+        assertEquals(table.search(record2.getKey()), record2);
+        assertEquals(table.delete(record2.getKey()), record2);
+        assertEquals(table.search(record3.getKey()), record3);
+        assertEquals(table.delete(record3.getKey()), record3);
+        table.printContents();
+        assertEquals(table.getCount(), 0);
+    }
+
+
+    /**
+     * Code coverage
+     */
     public void testMain() {
         String[] args = new String[] { "8", "testInput.txt" };
         GraphProject.main(args);
     }
 
 
+    /**
+     * Testing non repeated entries, not duplicates
+     * 
+     * @throws IOException
+     */
     public void testDuplicateArtist() throws IOException {
         String[] args = new String[] { "8",
             "testInputFiles/testDuplicateArtist.txt" };
@@ -105,19 +148,11 @@ public class MasterTest extends TestCase {
     }
 
 
-    public void testSfold() throws Exception {
-        assertTrue(Hash.h("a", 10000) == 97);
-        assertTrue(Hash.h("b", 10000) == 98);
-        assertTrue(Hash.h("aaaa", 10000) == 1873);
-        assertTrue(Hash.h("aaab", 10000) == 9089);
-        assertTrue(Hash.h("baaa", 10000) == 1874);
-        assertTrue(Hash.h("aaaaaaa", 10000) == 3794);
-        assertTrue(Hash.h("Long Lonesome Blues", 10000) == 4635);
-        assertTrue(Hash.h("Long   Lonesome Blues", 10000) == 4159);
-        assertTrue(Hash.h("long Lonesome Blues", 10000) == 4667);
-    }
-
-
+    /**
+     * Adding some records
+     * 
+     * @throws IOException
+     */
     public void testInsertSimple() throws IOException {
         String[] args = new String[] { "8",
             "testInputFiles/testInsertSimple.txt" };
@@ -128,32 +163,44 @@ public class MasterTest extends TestCase {
         assertEquals(expected, systemOut().getHistory());
     }
 
-    // Creating SeminarDB to handle function calls
-    private Controller controller = new Controller(128);
-    // Creating the commandPrcoessor to test
-    private CommandProcessor cp = new CommandProcessor(controller);
 
     /**
-     * Testing hasNextLine() mutation
-     * Reads in two different command files
+     * Inserts cause expansion of hash table
      * 
      * @throws IOException
      */
-    public void testHasNextLine() throws IOException {
-        cp.readCommands("testInputFiles/testHasNextLine.txt");
-
+    public void testInsertBasic() throws IOException {
+        String[] args = new String[] { "4",
+            "testInputFiles/testInsertBasic.txt" };
+        GraphProject.main(args);
         String expected = new String(Files.readAllBytes(Paths.get(
-            "testOutputFiles/testHasNextLine_output.txt")));
-        assertEquals(expected, systemOut().getHistory());
+            "testOutputFiles/testInsertBasic_output.txt")));
 
-        cp.readCommands("testInputFiles/testHasNextLine.txt");
-
-        expected = new String(Files.readAllBytes(Paths.get(
-            "testOutputFiles/testHasNextLine_output2.txt")));
         assertEquals(expected, systemOut().getHistory());
     }
 
 
+    /**
+     * Expansion of Hash table with tombstones
+     * 
+     * @throws IOException
+     */
+    public void testInsertComplex() throws IOException {
+        String[] args = new String[] { "8",
+            "testInputFiles/testInsertSimple.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testInsertSimple_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
+
+    /**
+     * Testing simple removal
+     * 
+     * @throws IOException
+     */
     public void testRemoveSimple() throws IOException {
         String[] args = new String[] { "8",
             "testInputFiles/testRemoveSimple.txt" };
@@ -165,23 +212,20 @@ public class MasterTest extends TestCase {
     }
 
 
-    public void testDelete1() {
-        Hash table = new Hash(8);
-        Record record1 = new Record("A", null);
-        Record record2 = new Record("I", null);
-        Record record3 = new Record("Q", null);
+    /**
+     * Delete records, expand, delete records again
+     * 
+     * @throws IOException
+     */
+    public void testRemoveBasic() throws IOException {
+        String[] args = new String[] { "4",
+            "testInputFiles/testRemoveBasic.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testRemoveBasic_output.txt")));
 
-        assertTrue(table.insert(record1));
-        assertTrue(table.insert(record2));
-        assertTrue(table.insert(record3));
-        assertEquals(table.getCount(), 3);
+        assertEquals(expected, systemOut().getHistory());
 
-        assertEquals(table.search(record1.getKey()), record1);
-        assertEquals(table.delete(record1.getKey()), record1);
-        assertEquals(table.search(record2.getKey()), record2);
-        assertEquals(table.delete(record2.getKey()), record2);
-        assertEquals(table.search(record3.getKey()), record3);
-        assertEquals(table.delete(record3.getKey()), record3);
-        assertEquals(table.getCount(), 0);
     }
+
 }
