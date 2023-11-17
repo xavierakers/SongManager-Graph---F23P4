@@ -3,7 +3,8 @@
  *
  * @author Xavier Akers
  * @author Zoe Hite
- * @version Last Updated
+ * @version Last Updated 11-12-2023
+ * @since 11-5-2023
  */
 
 public class Hash {
@@ -30,6 +31,13 @@ public class Hash {
     }
 
 
+    /**
+     * Insert the record into the hash table
+     * 
+     * @param record
+     *            Record Object storing KV Pair
+     * @return True if successfully inserted
+     */
     public boolean insert(Record record) {
         if (count == threshold) {
             resize();
@@ -51,6 +59,13 @@ public class Hash {
     }
 
 
+    /**
+     * Searched for matching record
+     * 
+     * @param key
+     *            The record key
+     * @return The matching record, null if non-existant
+     */
     public Record search(String key) {
         int home = h(key, capacity);
         int step = 0;
@@ -70,17 +85,27 @@ public class Hash {
     }
 
 
+    /**
+     * Removes record from table
+     * 
+     * @param key
+     *            Record key
+     * @return Deleted record, null if non-existant
+     */
     public Record delete(String key) {
         int home = h(key, capacity);
         int step = 0;
         int index = home;
 
         while (table[index] != null) {
-            if (table[index].getKey().equals(key)) {
-                Record record = table[index];
-                table[index] = TOMBSTONE;
-                count--;
-                return record;
+            if (table[index].getKey() != null) {
+                if (table[index].getKey().equals(key)) {
+                    Record record = table[index];
+                    table[index] = TOMBSTONE;
+                    count--;
+                    return record;
+                }
+
             }
             step++;
             index = (home + q(step)) % capacity;
@@ -89,6 +114,10 @@ public class Hash {
     }
 
 
+    /**
+     * Doubles the hash table size
+     * Removes tombstones
+     */
     private void resize() {
         capacity *= 2;
         threshold = (int)(capacity / 2);
@@ -97,19 +126,18 @@ public class Hash {
 
         for (Record value : table) {
             if (value != null && value != TOMBSTONE) {
-                int home = h(value.getKey(), count);
+                int home = h(value.getKey(), capacity);
                 int step = 0;
                 int index = home;
 
                 while (newTable[index] != null) {
                     step++;
-                    index = (home + q(step) % count);
+                    index = (home + q(step) % capacity);
                 }
                 newTable[index] = value;
             }
         }
         table = newTable;
-        System.out.printf("Song hash table size doubled.%n");
     }
 
 
@@ -152,9 +180,43 @@ public class Hash {
      * 
      * @param i
      *            The ith step in the probe sequence
-     * @return
+     * @return Step value
      */
     public static int q(int i) {
         return i * i;
+    }
+
+
+    /**
+     * @return Number of items in the table
+     */
+    public int getCount() {
+        return count;
+    }
+
+
+    /**
+     * @return Max number of items before resizing
+     */
+    public int getThreshold() {
+        return threshold;
+    }
+
+
+    /**
+     * Prints the contents with its respective indexes
+     */
+    public void printContents() {
+        for (int i = 0; i < capacity; i++) {
+            if (table[i] != null) {
+                if (table[i].getKey() == null) {
+                    System.out.printf("%d: TOMBSTONE%n", i);
+                }
+                else {
+                    System.out.printf("%d: |%s|%n", i, table[i].getKey());
+                }
+            }
+
+        }
     }
 }
