@@ -11,7 +11,7 @@
 public class GraphNode {
     private int index;
     private GraphNode next;
-
+    private GraphNode prev;
     /**
      * Constructor
      * 
@@ -27,7 +27,7 @@ public class GraphNode {
     /**
      * @return Node Data
      */
-    public int getIndex() {
+    public int getData() {
         return index;
     }
 
@@ -46,6 +46,22 @@ public class GraphNode {
      */
     public void setNext(GraphNode node) {
         this.next = node;
+    }
+
+
+    /**
+     * @return the prev
+     */
+    public GraphNode getPrev() {
+        return prev;
+    }
+
+
+    /**
+     * @param prev the prev to set
+     */
+    public void setPrev(GraphNode prev) {
+        this.prev = prev;
     }
 
 }
