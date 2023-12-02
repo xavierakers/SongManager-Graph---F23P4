@@ -25,6 +25,7 @@ public class ParPtrTree {
                 weights[root1] += weights[root2];
             }
         }
+
     }
 
 
@@ -35,4 +36,5 @@ public class ParPtrTree {
         }
         return curr; // Now at root
     }
+
 }

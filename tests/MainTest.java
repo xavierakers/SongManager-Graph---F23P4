@@ -118,9 +118,13 @@ public class MainTest extends TestCase {
     }
 
 
-    public void testSampleInput() {
+    public void testSampleInput() throws IOException {
         String[] args = new String[] { "10", "P4sampleInput.txt" };
         GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "P4sampleOutput.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
     }
 
 }

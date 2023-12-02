@@ -25,6 +25,9 @@ public class GraphL {
     private Edge[] nodeArray;
     private Object[] nodeValues;
     private int numEdge;
+
+    private int numVertex;
+    private int numOfComponents;
     private int biggestConnectedComp;
     private int diameterBiggestComp;
     private int[] parents;
@@ -48,7 +51,7 @@ public class GraphL {
 
 
     public int nodeCount() {
-        return nodeArray.length;
+        return numEdge;
     }
 
 
@@ -99,6 +102,7 @@ public class GraphL {
                 curr.next.next.prev = curr.next;
             }
         }
+
     }
 
 
@@ -160,10 +164,7 @@ public class GraphL {
     public void printGraph() {
         parents = new int[nodeArray.length];
         counts = new int[nodeArray.length];
-        ParPtrTree tree = new ParPtrTree(nodeArray.length);
-
         for (int i = 0; i < nodeArray.length; i++) {
-            System.out.print(i);
             if (nodeArray[i] == null) {
                 parents[i] = -2;
                 counts[i] = 0;
@@ -172,24 +173,60 @@ public class GraphL {
                 parents[i] = -1;
                 counts[i] = 1;
 
-                int[] neighbors = neighbors(i);
-                for (int k = 0; i < neighbors.length; k++) {
-                    tree.UNION(i, neighbors[k]);
-                    counts[i]++;
-                }
-
             }
         }
+
+        for (int i = 0; i < nodeArray.length; i++) {
+            int[] neighbors = neighbors(i);
+            for (int k = 0; k < neighbors.length; k++) {
+                UNION(i, neighbors[k], parents, counts);
+            }
+        }
+
+        numOfComponents = 0;
+        for (int i = 0; i < parents.length; i++) {
+            if (parents[i] == -1) {
+                numOfComponents++;
+            }
+        }
+
         for (int i = 0; i < counts.length; i++) {
             if (counts[i] > biggestConnectedComp) {
                 biggestConnectedComp = counts[i];
             }
         }
-        if (counts.length > 0) {
-            for (int i = 0; i < counts.length; i++) {
-                diameter(tree, counts[i]);
+
+        // if (counts.length > 0) {
+// for (int i = 0; i < counts.length; i++) {
+// diameter(tree, counts[i]);
+// }
+// }
+    }
+
+
+    public void UNION(int a, int b, int[] array, int[] weights) {
+        int root1 = FIND(a, array); // Find root of node a
+        int root2 = FIND(b, array); // Find root of node b
+        if (root1 != root2) { // Merge with weighted union
+            if (weights[root2] > weights[root1]) {
+                array[root1] = root2;
+                weights[root2] += weights[root1];
+            }
+            else {
+                array[root2] = root1;
+                weights[root1] += weights[root2];
             }
         }
+
+    }
+
+
+    // Return the root of curr's tree
+    public int FIND(int curr, int[] array) {
+        while (array[curr] != -1) {
+            curr = array[curr];
+        }
+        return curr; // Now at root
     }
 
 
@@ -256,7 +293,7 @@ public class GraphL {
 
 
     public int getNumConnectedComponents() {
-        return counts.length;
+        return numOfComponents;
     }
 
 
