@@ -14,7 +14,7 @@ public class HashTableTest extends TestCase {
      */
     public void testInsertAndSeach1() {
         Hash table = new Hash(4);
-        Record record1 = new Record("record1", null);
+        Record record1 = new Record("record1", -1);
         assertTrue(table.insert(record1));
         assertEquals(table.search(record1.getKey()), record1);
 
@@ -30,8 +30,8 @@ public class HashTableTest extends TestCase {
      */
     public void testInsertDuplicateAndSearch() {
         Hash table = new Hash(8);
-        Record record1 = new Record("record1", null);
-        Record record2 = new Record("record1", null);
+        Record record1 = new Record("record1", -1);
+        Record record2 = new Record("record1", -1);
 
         assertTrue(table.insert(record1));
         assertFalse(table.insert(record2));
@@ -58,9 +58,9 @@ public class HashTableTest extends TestCase {
      */
     public void testDelete() {
         Hash table = new Hash(256);
-        Record record1 = new Record("record1", null);
-        Record record2 = new Record("record2", null);
-        Record record3 = new Record("record3", null);
+        Record record1 = new Record("record1", -1);
+        Record record2 = new Record("record2", -1);
+        Record record3 = new Record("record3", -1);
 
         assertTrue(table.insert(record1));
         assertTrue(table.insert(record2));
@@ -81,9 +81,9 @@ public class HashTableTest extends TestCase {
      */
     public void testResizeSimple() {
         Hash table = new Hash(4);
-        Record record1 = new Record("record1", null);
-        Record record2 = new Record("record2", null);
-        Record record3 = new Record("record3", null);
+        Record record1 = new Record("record1", -1);
+        Record record2 = new Record("record2", -1);
+        Record record3 = new Record("record3", -1);
         // capacity = 4
         // threshold = 2
         assertTrue(table.insert(record1));
@@ -99,9 +99,9 @@ public class HashTableTest extends TestCase {
      */
     public void testDelete1() {
         Hash table = new Hash(8);
-        Record record1 = new Record("A", null);
-        Record record2 = new Record("I", null);
-        Record record3 = new Record("Q", null);
+        Record record1 = new Record("A", -1);
+        Record record2 = new Record("I", -1);
+        Record record3 = new Record("Q", -1);
 
         assertTrue(table.insert(record1));
         assertTrue(table.insert(record2));

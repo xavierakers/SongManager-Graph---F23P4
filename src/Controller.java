@@ -11,6 +11,8 @@
 public class Controller {
     private Hash songTable;
     private Hash artistTable;
+    private GraphL graph;
+    private int totalRecords;
 
     /**
      * Constructor
@@ -21,6 +23,9 @@ public class Controller {
     public Controller(int hashSize) {
         songTable = new Hash(hashSize);
         artistTable = new Hash(hashSize);
+        graph = new GraphL();
+        graph.init(hashSize);
+        totalRecords = 0;
     }
 
 
@@ -33,27 +38,72 @@ public class Controller {
      */
     public boolean insert(String input) {
         String[] record = input.trim().split("<SEP>");
+
         String artist = record[0];
         String song = record[1];
-        Record artistRec = new Record(artist, new GraphNode(-1));
-        Record songRec = new Record(song, new GraphNode(-1));
+
+// Record artistRec = new Record(artist, -1);
+// Record songRec = new Record(song, -1);
+        Record artistRecord = new Record(artist, totalRecords);
+        boolean artistInserted = artistTable.insert(artistRecord);
 
         // Need to add check for duplicate
+
+        // Check for hash table size
         if (artistTable.getCount() == artistTable.getThreshold()) {
             System.out.println("Artist hash table size doubled.");
         }
-        if (artistTable.insert(artistRec)) {
 
+        // Inserting in hash table
+        if (artistInserted) {
             System.out.printf("|%s| is added to the Artist database.%n",
                 artist);
+
+            totalRecords++;
+        }
+        else {
+
         }
 
         if (songTable.getCount() == songTable.getThreshold()) {
             System.out.println("Song hash table size doubled.");
         }
-        if (songTable.insert(songRec)) {
+        else {
+
+        }
+        Record songRecord = new Record(song, totalRecords);
+        boolean songInserted = songTable.insert(songRecord);
+        if (songInserted) {
 
             System.out.printf("|%s| is added to the Song database.%n", song);
+            totalRecords++;
+        }
+
+        if (artistInserted && songInserted) {
+            graph.addEdge(totalRecords - 2, totalRecords - 1, 1);
+            graph.addEdge(totalRecords - 1, totalRecords - 2, 1);
+        }
+
+        int artistGraphIndex = artistTable.search(artist).getValue();
+        if (!artistInserted && songInserted) {
+
+            graph.addEdge(artistGraphIndex, totalRecords - 1, 1);
+            graph.addEdge(totalRecords - 1, artistGraphIndex, 1);
+        }
+
+        int songGraphIndex = songTable.search(song).getValue();
+        if (artistInserted && !songInserted) {
+
+            graph.addEdge(songGraphIndex, totalRecords - 1, 1);
+            graph.addEdge(totalRecords - 1, songGraphIndex, 1);
+        }
+
+        if (graph.hasEdge(artistGraphIndex, songGraphIndex) && graph.hasEdge(
+            songGraphIndex, artistGraphIndex) && !artistInserted
+            && !songInserted) {
+            System.out.printf(
+                "|%s<SEP>%s| duplicates a record already in the database.%n",
+                artist, song);
         }
 
         return true;
@@ -117,4 +167,18 @@ public class Controller {
                 break;
         }
     }
+
+
+    public void printGraph() {
+
+        graph.printGraph();
+
+        System.out.printf("There are %d connected components%n", graph
+            .getNumConnectedComponents());
+        System.out.printf("The largest connected component has %d elements%n",
+            graph.getBiggestComponentCount());
+        System.out.printf("The diameter of the largest component is %d%n", graph
+            .getBiggestComponentDiameter());
+    }
+
 }
