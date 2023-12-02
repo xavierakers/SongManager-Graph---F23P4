@@ -9,7 +9,7 @@ import student.TestCase;
  * 
  * @version Last Updated 2023-16-11
  * 
- * Testing with input and output files
+ *          Testing with input and output files
  */
 public class MainTest extends TestCase {
     /**
@@ -115,6 +115,12 @@ public class MainTest extends TestCase {
 
         assertEquals(expected, systemOut().getHistory());
 
+    }
+
+
+    public void testSampleInput() {
+        String[] args = new String[] { "10", "P4sampleInput.txt" };
+        GraphProject.main(args);
     }
 
 }

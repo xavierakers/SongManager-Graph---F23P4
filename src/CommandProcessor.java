@@ -63,7 +63,7 @@ public class CommandProcessor {
                         param = cmd[1].trim().split("\\s+");
                         switch (param[0]) {
                             case "graph":
-                                System.out.println(param[0]);
+                                controller.printGraph();
                                 break;
                             default:
                                 controller.printCount(param[0]);

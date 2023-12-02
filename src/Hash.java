@@ -11,7 +11,7 @@ public class Hash {
     /**
      * Deleted record placeholder
      */
-    static final Record TOMBSTONE = new Record(null, null);
+    static final Record TOMBSTONE = new Record(null, -1);
     private Record[] table;
     private int count;
     private int capacity;

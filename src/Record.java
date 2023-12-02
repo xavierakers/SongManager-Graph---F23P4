@@ -10,7 +10,7 @@
  */
 public class Record {
     private String key;
-    private GraphNode value;
+    private int value;
 
     /**
      * @param key
@@ -18,7 +18,7 @@ public class Record {
      * @param value
      *            GraphNode
      */
-    Record(String key, GraphNode value) {
+    Record(String key, int value) {
         this.key = key;
         this.value = value;
     }
@@ -44,7 +44,7 @@ public class Record {
     /**
      * @return the value
      */
-    public GraphNode getValue() {
+    public int getValue() {
         return value;
     }
 
@@ -53,7 +53,7 @@ public class Record {
      * @param value
      *            the value to set
      */
-    public void setValue(GraphNode value) {
+    public void setValue(int value) {
         this.value = value;
     }
 
