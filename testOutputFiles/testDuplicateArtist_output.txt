@@ -1,0 +1,3 @@
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+|Long   Lonesome Blues| is added to the Song database.

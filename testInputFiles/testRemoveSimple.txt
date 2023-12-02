@@ -1,0 +1,9 @@
+remove artist ma rainey
+remove song ma rainey
+insert Ma Rainey<SEP>Ma Rainey's Black Bottom
+remove artist ma rainey
+remove artist Ma Rainey
+remove song Ma Rainey's Black Bottom
+remove song ma rainey
+print song
+print artist

@@ -1,0 +1,40 @@
+total songs: 0
+total artists: 0
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+3: |Long Lonesome Blues|
+total songs: 1
+0: |Blind Lemon Jefferson|
+total artists: 1
+|Ma Rainey| is added to the Artist database.
+|Ma Rainey's Black Bottom| is added to the Song database.
+0: |Ma Rainey's Black Bottom|
+3: |Long Lonesome Blues|
+total songs: 2
+0: |Blind Lemon Jefferson|
+3: |Ma Rainey|
+total artists: 2
+Artist hash table size doubled.
+|Xavier| is added to the Artist database.
+Song hash table size doubled.
+|Mississippi Boweavil Blues| is added to the Song database.
+0: |Ma Rainey's Black Bottom|
+3: |Long Lonesome Blues|
+6: |Mississippi Boweavil Blues|
+total songs: 3
+0: |Blind Lemon Jefferson|
+5: |Xavier|
+7: |Ma Rainey|
+total artists: 3
+|Akers| is added to the Artist database.
+|long Lonesome Blues| is added to the Song database.
+0: |Ma Rainey's Black Bottom|
+3: |Long Lonesome Blues|
+4: |long Lonesome Blues|
+6: |Mississippi Boweavil Blues|
+total songs: 4
+0: |Blind Lemon Jefferson|
+4: |Akers|
+5: |Xavier|
+7: |Ma Rainey|
+total artists: 4

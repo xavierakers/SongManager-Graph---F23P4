@@ -1,0 +1,3 @@
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+|Blind Lemon Jefferson<SEP>Long Lonesome Blues| duplicates a record already in the database.
