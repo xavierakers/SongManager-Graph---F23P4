@@ -1,0 +1,54 @@
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+11: |Long Lonesome Blues|
+total songs: 1
+0: |Blind Lemon Jefferson|
+total artists: 1
+11: |Long Lonesome Blues|
+total songs: 1
+0: |Blind Lemon Jefferson|
+total artists: 1
+|Long   Lonesome Blues| is added to the Song database.
+11: |Long Lonesome Blues|
+15: |Long   Lonesome Blues|
+total songs: 2
+0: |Blind Lemon Jefferson|
+total artists: 1
+|long Lonesome Blues| is added to the Song database.
+11: |Long Lonesome Blues|
+12: |long Lonesome Blues|
+15: |Long   Lonesome Blues|
+total songs: 3
+0: |Blind Lemon Jefferson|
+total artists: 1
+|Ma Rainey| is added to the Artist database.
+|Ma Rainey's Black Bottom| is added to the Song database.
+8: |Ma Rainey's Black Bottom|
+11: |Long Lonesome Blues|
+12: |long Lonesome Blues|
+15: |Long   Lonesome Blues|
+total songs: 4
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+|Mississippi Boweavil Blues| is added to the Song database.
+8: |Ma Rainey's Black Bottom|
+11: |Long Lonesome Blues|
+12: |long Lonesome Blues|
+14: |Mississippi Boweavil Blues|
+15: |Long   Lonesome Blues|
+total songs: 5
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+|Fixin' To Die Blues| is added to the Song database.
+8: |Ma Rainey's Black Bottom|
+11: |Long Lonesome Blues|
+12: |long Lonesome Blues|
+13: |Fixin' To Die Blues|
+14: |Mississippi Boweavil Blues|
+15: |Long   Lonesome Blues|
+total songs: 6
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2

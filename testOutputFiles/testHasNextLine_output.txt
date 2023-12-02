@@ -1,0 +1,2 @@
+total songs: 0
+total artists: 0
