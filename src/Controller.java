@@ -42,8 +42,6 @@ public class Controller {
         String artist = record[0];
         String song = record[1];
 
-// Record artistRec = new Record(artist, -1);
-// Record songRec = new Record(song, -1);
         Record artistRecord = new Record(artist, totalRecords);
         boolean artistInserted = artistTable.insert(artistRecord);
 
@@ -97,13 +95,18 @@ public class Controller {
             graph.addEdge(songGraphIndex, totalRecords - 1, 1);
             graph.addEdge(totalRecords - 1, songGraphIndex, 1);
         }
-
-        if (graph.hasEdge(artistGraphIndex, songGraphIndex) && graph.hasEdge(
-            songGraphIndex, artistGraphIndex) && !artistInserted
+        else if (graph.hasEdge(artistGraphIndex, songGraphIndex) && graph
+            .hasEdge(songGraphIndex, artistGraphIndex) && !artistInserted
             && !songInserted) {
             System.out.printf(
                 "|%s<SEP>%s| duplicates a record already in the database.%n",
                 artist, song);
+        }
+        else if (!graph.hasEdge(artistGraphIndex, songGraphIndex) && !graph
+            .hasEdge(songGraphIndex, artistGraphIndex) && !artistInserted
+            && !songInserted) {
+            graph.addEdge(songGraphIndex, artistGraphIndex, 1);
+            graph.addEdge(artistGraphIndex, songGraphIndex, 1);
         }
 
         return true;

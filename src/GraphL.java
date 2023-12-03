@@ -26,7 +26,6 @@ public class GraphL {
     private Object[] nodeValues;
     private int numEdge;
 
-    private int numVertex;
     private int numOfComponents;
     private int biggestConnectedComp;
     private int diameterBiggestComp;
@@ -165,21 +164,26 @@ public class GraphL {
         parents = new int[nodeArray.length];
         counts = new int[nodeArray.length];
         for (int i = 0; i < nodeArray.length; i++) {
-            if (nodeArray[i] == null) {
-                parents[i] = -2;
-                counts[i] = 0;
-            }
-            else {
-                parents[i] = -1;
-                counts[i] = 1;
+            if ((nodeArray[i].next != null)) {
+                if ((nodeArray[i].next.vertex == -1)) {
+                    parents[i] = -2;
+                    counts[i] = 0;
+                }
 
+                else {
+                    parents[i] = -1;
+                    counts[i] = 1;
+
+                }
             }
         }
 
         for (int i = 0; i < nodeArray.length; i++) {
-            int[] neighbors = neighbors(i);
-            for (int k = 0; k < neighbors.length; k++) {
-                UNION(i, neighbors[k], parents, counts);
+            if (parents[i] != -2) {
+                int[] neighbors = neighbors(i);
+                for (int k = 0; k < neighbors.length; k++) {
+                    UNION(i, neighbors[k], parents, counts);
+                }
             }
         }
 
@@ -197,16 +201,17 @@ public class GraphL {
         }
 
         // if (counts.length > 0) {
-// for (int i = 0; i < counts.length; i++) {
-// diameter(tree, counts[i]);
-// }
-// }
-    }
+//        for (int i = 0; i < counts.length; i++) {
+//            diameter(tree, counts[i]);
+//        }
+    
 
+    }
 
     public void UNION(int a, int b, int[] array, int[] weights) {
         int root1 = FIND(a, array); // Find root of node a
         int root2 = FIND(b, array); // Find root of node b
+
         if (root1 != root2) { // Merge with weighted union
             if (weights[root2] > weights[root1]) {
                 array[root1] = root2;
