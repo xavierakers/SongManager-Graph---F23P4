@@ -1,2 +1,31 @@
+print song
+print artist
+print graph
+insert Blind Lemon Jefferson<SEP>Long   Lonesome Blues
+print song
+print artist
+print graph
+insert Ma Rainey<SEP>Long   Lonesome Blues
+print song
+print artist
+print graph
 insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+print song
+print artist
+print graph
 insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+print song
+print artist
+print graph
+insert Ma Rainey<SEP>Mississippi Boweavil Blues
+print song
+print artist
+print graph
+insert Ma Rainey<SEP>Long Lonesome Blues
+print song
+print artist
+print graph
+insert Blind Lemon Jefferson<SEP>Mississippi Boweavil Blues
+print song
+print artist
+print graph

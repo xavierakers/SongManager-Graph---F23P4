@@ -4,17 +4,26 @@
 total songs: 1
 0: |Blind Lemon Jefferson|
 total artists: 1
+There are 1 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
 |Blind Lemon Jefferson<SEP>Long Lonesome Blues| duplicates a record already in the database.
 3: |Long Lonesome Blues|
 total songs: 1
 0: |Blind Lemon Jefferson|
 total artists: 1
+There are 1 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
 |Long   Lonesome Blues| is added to the Song database.
 3: |Long Lonesome Blues|
 7: |Long   Lonesome Blues|
 total songs: 2
 0: |Blind Lemon Jefferson|
 total artists: 1
+There are 1 connected components
+The largest connected component has 3 elements
+The diameter of the largest component is 2
 |long Lonesome Blues| is added to the Song database.
 3: |Long Lonesome Blues|
 4: |long Lonesome Blues|
@@ -22,6 +31,9 @@ total artists: 1
 total songs: 3
 0: |Blind Lemon Jefferson|
 total artists: 1
+There are 1 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2
 |Ma Rainey| is added to the Artist database.
 |Ma Rainey's Black Bottom| is added to the Song database.
 0: |Ma Rainey's Black Bottom|
@@ -32,6 +44,9 @@ total songs: 4
 0: |Blind Lemon Jefferson|
 7: |Ma Rainey|
 total artists: 2
+There are 2 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2
 Song hash table size doubled.
 |Mississippi Boweavil Blues| is added to the Song database.
 8: |Ma Rainey's Black Bottom|
@@ -43,6 +58,9 @@ total songs: 5
 0: |Blind Lemon Jefferson|
 7: |Ma Rainey|
 total artists: 2
+There are 2 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2
 |Fixin' To Die Blues| is added to the Song database.
 8: |Ma Rainey's Black Bottom|
 11: |Long Lonesome Blues|
@@ -54,3 +72,6 @@ total songs: 6
 0: |Blind Lemon Jefferson|
 7: |Ma Rainey|
 total artists: 2
+There are 2 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2

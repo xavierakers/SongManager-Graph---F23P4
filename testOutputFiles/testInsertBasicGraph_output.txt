@@ -1,0 +1,53 @@
+total songs: 0
+total artists: 0
+There are 0 connected components
+The largest connected component has 0 elements
+The diameter of the largest component is 0
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+3: |Long Lonesome Blues|
+total songs: 1
+0: |Blind Lemon Jefferson|
+total artists: 1
+There are 1 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
+|Ma Rainey| is added to the Artist database.
+|Ma Rainey's Black Bottom| is added to the Song database.
+0: |Ma Rainey's Black Bottom|
+3: |Long Lonesome Blues|
+total songs: 2
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+There are 2 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
+|Xavier| is added to the Artist database.
+|Mississippi Boweavil Blues| is added to the Song database.
+0: |Ma Rainey's Black Bottom|
+3: |Long Lonesome Blues|
+6: |Mississippi Boweavil Blues|
+total songs: 3
+0: |Blind Lemon Jefferson|
+5: |Xavier|
+7: |Ma Rainey|
+total artists: 3
+There are 3 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
+|Akers| is added to the Artist database.
+|long Lonesome Blues| is added to the Song database.
+0: |Ma Rainey's Black Bottom|
+3: |Long Lonesome Blues|
+4: |long Lonesome Blues|
+6: |Mississippi Boweavil Blues|
+total songs: 4
+0: |Blind Lemon Jefferson|
+4: |Akers|
+5: |Xavier|
+7: |Ma Rainey|
+total artists: 4
+There are 4 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1

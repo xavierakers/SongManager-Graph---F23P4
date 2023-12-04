@@ -13,6 +13,82 @@ import student.TestCase;
  */
 public class MasterTest extends TestCase {
     /**
+     * Adding some records
+     * 
+     * @throws IOException
+     */
+    public void testInsertSimpleGraph() throws IOException {
+        String[] args = new String[] { "8",
+            "testInputFiles/testInsertSimpleGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testInsertSimpleGraph_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
+
+    /**
+     * Adding some records
+     * 
+     * @throws IOException
+     */
+    public void testInsertBasicGraph() throws IOException {
+        String[] args = new String[] { "8",
+            "testInputFiles/testInsertBasicGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testInsertBasicGraph_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
+
+    /**
+     * Expansion of Hash table with tombstones
+     * 
+     * @throws IOException
+     */
+    public void testInsertComplexGraph() throws IOException {
+        String[] args = new String[] { "8",
+            "testInputFiles/testInsertComplexGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testInsertComplexGraph_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
+
+    /**
+     * 
+     * @throws IOException
+     */
+    public void testInsertComplex2Graph() throws IOException {
+        String[] args = new String[] { "8",
+            "testInputFiles/testInsertComplex2.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testInsertComplex2_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
+
+    /**
+     * 
+     * @throws IOException
+     */
+    public void testDeleteSimpleGraph() throws IOException {
+        String[] args = new String[] { "5",
+            "testInputFiles/testDeleteSimpleGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testDeleteSimpleGraph_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+    /**
      * Simple hash table insertion
      */
     public void testInsertAndSeach1() {
@@ -121,8 +197,6 @@ public class MasterTest extends TestCase {
         table.printContents();
         assertEquals(table.getCount(), 0);
     }
-
-
     /**
      * Code coverage
      */
@@ -187,10 +261,10 @@ public class MasterTest extends TestCase {
      */
     public void testInsertComplex() throws IOException {
         String[] args = new String[] { "8",
-            "testInputFiles/testInsertSimple.txt" };
+            "testInputFiles/testInsertComplex.txt" };
         GraphProject.main(args);
         String expected = new String(Files.readAllBytes(Paths.get(
-            "testOutputFiles/testInsertSimple_output.txt")));
+            "testOutputFiles/testInsertComplex_output.txt")));
 
         assertEquals(expected, systemOut().getHistory());
     }
@@ -227,5 +301,37 @@ public class MasterTest extends TestCase {
         assertEquals(expected, systemOut().getHistory());
 
     }
+
+
+    /**
+     * More complex testing
+     * 
+     * @throws IOException
+     */
+    public void testSampleInput() throws IOException {
+        String[] args = new String[] { "10", "P4sampleInput.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "P4sampleOutput.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
+
+    /**
+     * More complex testing
+     * 
+     * @throws IOException
+     */
+    public void testDuplicateInsert() throws IOException {
+        String[] args = new String[] { "10",
+            "testInputFiles/testDuplicateInsert.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testDuplicateInsert_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
 
 }

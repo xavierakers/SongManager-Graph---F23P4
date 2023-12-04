@@ -5,6 +5,7 @@ import student.TestCase;
 
 /**
  * @author Xavier Akers
+ * @author Zoe Hite
  * 
  * @version Last Updated 11-12-2023
  * 

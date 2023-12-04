@@ -1,0 +1,50 @@
+There are 0 connected components
+The largest connected component has 0 elements
+The diameter of the largest component is 0
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+There are 1 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
+|Long   Lonesome Blues| is added to the Song database.
+There are 1 connected components
+The largest connected component has 3 elements
+The diameter of the largest component is 2
+Song hash table size doubled.
+|long Lonesome Blues| is added to the Song database.
+There are 1 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2
+|Ma Rainey| is added to the Artist database.
+|Ma Rainey's Black Bottom| is added to the Song database.
+There are 2 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2
+There are 1 connected components
+The largest connected component has 6 elements
+The diameter of the largest component is 4
+|Mississippi Boweavil Blues| is added to the Song database.
+There are 1 connected components
+The largest connected component has 7 elements
+The diameter of the largest component is 4
+Song hash table size doubled.
+|Fixin' To Die Blues| is added to the Song database.
+There are 1 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 4
+|Xavier| is added to the Artist database.
+|my song| is added to the Song database.
+There are 2 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 4
+There are 1 connected components
+The largest connected component has 10 elements
+The diameter of the largest component is 6
+|Fixin' To Die Blues| is removed from the Song database.
+There are 2 connected components
+The largest connected component has 7 elements
+The diameter of the largest component is 4
+|Ma Rainey| is removed from the Artist database.
+There are 2 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2

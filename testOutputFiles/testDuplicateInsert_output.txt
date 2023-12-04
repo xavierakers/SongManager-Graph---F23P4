@@ -1,3 +1,74 @@
+total songs: 0
+total artists: 0
+There are 0 connected components
+The largest connected component has 0 elements
+The diameter of the largest component is 0
 |Blind Lemon Jefferson| is added to the Artist database.
+|Long   Lonesome Blues| is added to the Song database.
+9: |Long   Lonesome Blues|
+total songs: 1
+0: |Blind Lemon Jefferson|
+total artists: 1
+There are 1 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
+|Ma Rainey| is added to the Artist database.
+9: |Long   Lonesome Blues|
+total songs: 1
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+There are 1 connected components
+The largest connected component has 3 elements
+The diameter of the largest component is 2
 |Long Lonesome Blues| is added to the Song database.
+5: |Long Lonesome Blues|
+9: |Long   Lonesome Blues|
+total songs: 2
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+There are 1 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 3
 |Blind Lemon Jefferson<SEP>Long Lonesome Blues| duplicates a record already in the database.
+5: |Long Lonesome Blues|
+9: |Long   Lonesome Blues|
+total songs: 2
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+There are 1 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 3
+|Mississippi Boweavil Blues| is added to the Song database.
+2: |Mississippi Boweavil Blues|
+5: |Long Lonesome Blues|
+9: |Long   Lonesome Blues|
+total songs: 3
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+There are 1 connected components
+The largest connected component has 5 elements
+The diameter of the largest component is 4
+2: |Mississippi Boweavil Blues|
+5: |Long Lonesome Blues|
+9: |Long   Lonesome Blues|
+total songs: 3
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+There are 1 connected components
+The largest connected component has 5 elements
+The diameter of the largest component is 3
+2: |Mississippi Boweavil Blues|
+5: |Long Lonesome Blues|
+9: |Long   Lonesome Blues|
+total songs: 3
+0: |Blind Lemon Jefferson|
+7: |Ma Rainey|
+total artists: 2
+There are 1 connected components
+The largest connected component has 5 elements
+The diameter of the largest component is 2

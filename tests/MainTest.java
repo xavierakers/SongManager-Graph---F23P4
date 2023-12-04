@@ -76,10 +76,10 @@ public class MainTest extends TestCase {
      */
     public void testInsertComplex() throws IOException {
         String[] args = new String[] { "8",
-            "testInputFiles/testInsertSimple.txt" };
+            "testInputFiles/testInsertComplex.txt" };
         GraphProject.main(args);
         String expected = new String(Files.readAllBytes(Paths.get(
-            "testOutputFiles/testInsertSimple_output.txt")));
+            "testOutputFiles/testInsertComplex_output.txt")));
 
         assertEquals(expected, systemOut().getHistory());
     }
@@ -118,11 +118,32 @@ public class MainTest extends TestCase {
     }
 
 
+    /**
+     * More complex testing
+     * 
+     * @throws IOException
+     */
     public void testSampleInput() throws IOException {
         String[] args = new String[] { "10", "P4sampleInput.txt" };
         GraphProject.main(args);
         String expected = new String(Files.readAllBytes(Paths.get(
             "P4sampleOutput.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
+    }
+
+
+    /**
+     * More complex testing
+     * 
+     * @throws IOException
+     */
+    public void testDuplicateInsert() throws IOException {
+        String[] args = new String[] { "10",
+            "testInputFiles/testDuplicateInsert.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testDuplicateInsert_output.txt")));
 
         assertEquals(expected, systemOut().getHistory());
     }
