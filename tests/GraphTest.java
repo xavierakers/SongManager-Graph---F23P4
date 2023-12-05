@@ -95,7 +95,7 @@ public class GraphTest extends TestCase {
      */
     public void testGraph() {
         GraphL graph = new GraphL();
-        graph.init(8);
+        graph.init(10);
         graph.analyzeComponents();
         System.out.printf("# of components %d%n", graph
             .getNumConnectedComponents());
@@ -103,35 +103,51 @@ public class GraphTest extends TestCase {
             .getBiggestComponentCount());
         graph.addEdge(0, 1, 1);
         graph.addEdge(1, 0, 1);
-        graph.addEdge(0, 2, 1);
-        graph.addEdge(2, 0, 1);
-        graph.addEdge(0, 3, 1);
-        graph.addEdge(3, 0, 1);
+
+        graph.addEdge(0, 4, 1);
+        graph.addEdge(4, 0, 1);
+
+        graph.addEdge(0, 5, 1);
+        graph.addEdge(5, 0, 1);
+
+        graph.addEdge(0, 6, 1);
+        graph.addEdge(6, 0, 1);
+
+        graph.addEdge(1, 7, 1);
+        graph.addEdge(7, 1, 1);
+
+        graph.addEdge(7, 8, 1);
+        graph.addEdge(8, 7, 1);
+
+        graph.addEdge(2, 3, 1);
+        graph.addEdge(3, 2, 1);
+
+//        graph.printAdjList();
 
         graph.analyzeComponents();
-        System.out.printf("# of components %d%n", graph
-            .getNumConnectedComponents());
-        System.out.printf("size of largest componenet %d%n", graph
-            .getBiggestComponentCount());
-        graph.printAdjList();
-        graph.removeNode(1);
-
-        graph.printAdjList();
-        graph.analyzeComponents();
-        System.out.printf("# of components %d%n", graph
-            .getNumConnectedComponents());
-        System.out.printf("size of largest componenet %d%n", graph
-            .getBiggestComponentCount());
-
-        System.out.println("here");
-        graph.addEdge(0, graph.addNode(), 1);
-
-        graph.printAdjList();
 
         System.out.printf("# of components %d%n", graph
             .getNumConnectedComponents());
         System.out.printf("size of largest componenet %d%n", graph
             .getBiggestComponentCount());
 
+        graph.analyzeDiameter(0);
+
+    }
+
+
+    /**
+     * Remove test
+     * 
+     * @throws IOException
+     */
+    public void testDeleteBasicGraph() throws IOException {
+        String[] args = new String[] { "16",
+            "testInputFiles/testDeleteBasicGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testDeleteBasicGraph_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
     }
 }

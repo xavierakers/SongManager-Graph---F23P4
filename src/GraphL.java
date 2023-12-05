@@ -34,7 +34,7 @@ public class GraphL {
     private int numOfComponents;
     private int biggestDiameter;
     private int biggestConnectedComp;
-    private int listPos;
+    private int componentSize;
 
     /**
      * Empty Constructor
@@ -51,15 +51,14 @@ public class GraphL {
      *            Size of the adjacency list
      */
     public void init(int n) {
-        nodeArray = new Edge[n];
-        for (int i = 0; i < n; i++) {
+        nodeArray = new Edge[n*2];
+        for (int i = 0; i < nodeArray.length; i++) {
             nodeArray[i] = new Edge(-1, -1, null, null);
         }
         nodeValues = new Object[n];
         numEdge = 0;
         biggestConnectedComp = 0;
         biggestDiameter = 0;
-        listPos = 0;
     }
 
 
@@ -141,13 +140,22 @@ public class GraphL {
     /**
      * @return The index of the next open space
      */
-    public int addNode() {
+    public int[] addNode() {
+        int[] vertices = new int[] { -1, -1 };
         for (int i = 0; i < nodeArray.length; i++) {
             if (nodeArray[i].next == null) {
-                return i;
+                vertices[0] = i;
+                break;
             }
         }
-        return 0;
+
+        for (int i = vertices[0] + 1; i < nodeArray.length; i++) {
+            if (nodeArray[i].next == null) {
+                vertices[1] = i;
+                break;
+            }
+        }
+        return vertices;
     }
 
 
@@ -174,7 +182,6 @@ public class GraphL {
         else {
             curr.next = new Edge(w, wgt, curr, curr.next);
             numEdge++;
-            listPos++;
             if (curr.next.next != null) {
                 curr.next.next.prev = curr.next;
             }
@@ -376,6 +383,61 @@ public class GraphL {
     }
 
 
+    public int[] getComponentVertices(int rootIndex) {
+        boolean[] visited = new boolean[nodeArray.length];
+        int[] componentVertices = new int[nodeArray.length];
+        componentSize = 0;
+
+        dfs(rootIndex, componentVertices, visited);
+        // return componentVertices;
+        return trimArray(componentVertices, componentSize);
+
+    }
+
+
+    /**
+     * Searches for all vertices in a component
+     * 
+     * @param vertex
+     *            The root index of the component
+     * @param componentVertices
+     *            Array reference holding the components
+     * @param visited
+     *            Array reference storing information whether the node has been
+     *            stored
+     */
+    private void dfs(int vertex, int[] componentVertices, boolean[] visited) {
+
+        visited[vertex] = true;
+        componentVertices[componentSize++] = vertex;
+        Edge curr = nodeArray[vertex].next;
+
+        while (curr != null) {
+            int neighbor = curr.vertex;
+            if (!visited[neighbor]) {
+                dfs(neighbor, componentVertices, visited);
+            }
+            curr = curr.next;
+        }
+    }
+
+
+    /**
+     * Trims excess vertices out of the component
+     * 
+     * @param array
+     *            Array of component vertices
+     * @param size
+     *            The number of vertices in the component
+     * @return The trimmed array of components vertices
+     */
+    private int[] trimArray(int[] array, int size) {
+        int[] trimmedArray = new int[size];
+        System.arraycopy(array, 0, trimmedArray, 0, size);
+        return trimmedArray;
+    }
+
+
     /**
      * Finds the diameter of the largest component
      */
@@ -393,20 +455,28 @@ public class GraphL {
             }
         }
 
-        // Crashing here after removing
-        for (int i = 0; i < distances.length; i++) {
-            Edge curr = null;
-            if (nodeArray[i].next != null) {
-                curr = nodeArray[i];
+        int[] vertices = getComponentVertices(root);
+
+// System.out.println("vertices");
+// for (int i = 0; i < vertices.length; i++) {
+// System.out.println(vertices[i]);
+// }
+
+        for (int i = 0; i < vertices.length; i++) {
+            for (int j = 0; j < vertices.length; j++) {
+                if (hasEdge(vertices[i], vertices[j])) {
+                    distances[i][j] = 1;
+                }
             }
-            while ((curr != null) && (curr.next != null)) {
-
-                curr = curr.next;
-                distances[i][curr.vertex] = 1;
-
-            }
-
         }
+
+// System.out.println("printing distance matrix");
+// for (int i = 0; i < distances.length; i++) {
+// for (int j = 0; j < distances.length; j++) {
+// System.out.print(distances[i][j] + " ");
+// }
+// System.out.println();
+// }
 
         floyds(distances);
         biggestDiameter = 0;
@@ -465,19 +535,20 @@ public class GraphL {
         return biggestDiameter;
     }
 
+
     /**
      * Temporary method check
      */
-    public void printAdjList() {
-        System.out.println("PRINTING ADJ LIST");
-        for (int i = 0; i < nodeArray.length; i++) {
-            Edge curr = nodeArray[i];
-            System.out.print(curr.vertex + " ");
-            while (curr.next != null) {
-                curr = curr.next;
-                System.out.print(curr.vertex + " ");
-            }
-            System.out.println();
-        }
-    }
+//    public void printAdjList() {
+//        System.out.println("PRINTING ADJ LIST");
+//        for (int i = 0; i < nodeArray.length; i++) {
+//            Edge curr = nodeArray[i];
+//            System.out.print(curr.vertex + " ");
+//            while (curr.next != null) {
+//                curr = curr.next;
+//                System.out.print(curr.vertex + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
 }

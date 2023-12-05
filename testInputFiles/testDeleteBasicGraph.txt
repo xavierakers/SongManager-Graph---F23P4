@@ -1,19 +1,19 @@
 print graph
 insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
 print graph
-insert Blind Lemon Jefferson<SEP>Long   Lonesome Blues
+insert Blind Lemon Jefferson<SEP>Ma Rainey's Black Bottom
 print graph
-insert Blind Lemon Jefferson<SEP>long Lonesome Blues
+insert Blind Lemon Jefferson<SEP>Long   Lonesome Blues
 print graph
 insert Ma Rainey<SEP>Ma Rainey's Black Bottom
 print graph
-insert Ma Rainey<SEP>Long Lonesome Blues
-print graph
 insert Ma Rainey<SEP>Mississippi Boweavil Blues
 print graph
-insert Ma Rainey<SEP>Fixin' To Die Blues
+insert xavier<SEP>song
 print graph
-remove song Fixin' To Die Blues
+insert xavier<SEP>Mississippi Boweavil Blues
 print graph
 remove artist Ma Rainey
+print graph
+insert xavier<SEP>song2
 print graph

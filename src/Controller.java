@@ -72,24 +72,24 @@ public class Controller {
         }
         // Both artist and song were just inserted
         if (artistInserted && songInserted) {
-            int index1 = graph.addNode();
-            int index2 = graph.addNode();
-            graph.addEdge(index1, index2, 1);
-            graph.addEdge(index1, index2, 1);
+            int[] index1 = graph.addNode();
+            int[] index2 = graph.addNode();
+            graph.addEdge(index1[0], index2[1], 1);
+            graph.addEdge(index2[1], index1[0], 1);
         }
         // Artist exists, song inserted
         int artistGraphIndex = artistTable.search(artist).getValue();
         if (!artistInserted && songInserted) {
-            int newIndex = graph.addNode();
-            graph.addEdge(artistGraphIndex, newIndex, 1);
-            graph.addEdge(newIndex, artistGraphIndex, 1);
+            int[] newIndex = graph.addNode();
+            graph.addEdge(artistGraphIndex, newIndex[0], 1);
+            graph.addEdge(newIndex[0], artistGraphIndex, 1);
         }
         // Song exists, artist inserted
         int songGraphIndex = songTable.search(song).getValue();
         if (artistInserted && !songInserted) {
-            int newIndex = graph.addNode();
-            graph.addEdge(songGraphIndex, newIndex, 1);
-            graph.addEdge(newIndex, songGraphIndex, 1);
+            int[] newIndex = graph.addNode();
+            graph.addEdge(songGraphIndex, newIndex[0], 1);
+            graph.addEdge(newIndex[0], songGraphIndex, 1);
         }
         // Both exist and are already linked
         else if (graph.hasEdge(artistGraphIndex, songGraphIndex)
@@ -99,7 +99,8 @@ public class Controller {
                 artist, song);
         }
         // Both exist and are not linked
-        else if (!graph.hasEdge(artistGraphIndex, songGraphIndex)) {
+        else if (!graph.hasEdge(artistGraphIndex, songGraphIndex)
+            && !artistInserted && !songInserted) {
             graph.addEdge(songGraphIndex, artistGraphIndex, 1);
             graph.addEdge(artistGraphIndex, songGraphIndex, 1);
         }
