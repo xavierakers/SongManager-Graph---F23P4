@@ -1,0 +1,58 @@
+There are 0 connected components
+The largest connected component has 0 elements
+The diameter of the largest component is 0
+|Blind Lemon Jefferson| is added to the Artist database.
+|song1| is added to the Song database.
+|song2| is added to the Song database.
+|song3| is added to the Song database.
+|song4| is added to the Song database.
+|song5| is added to the Song database.
+Song hash table size doubled.
+|song6| is added to the Song database.
+|song7| is added to the Song database.
+There are 1 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 2
+|xavier| is added to the Artist database.
+|song8| is added to the Song database.
+There are 2 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 2
+|zoe| is added to the Artist database.
+There are 2 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 2
+|meegs| is added to the Artist database.
+There are 2 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 2
+|song9| is added to the Song database.
+There are 2 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 2
+|song10| is added to the Song database.
+There are 2 connected components
+The largest connected component has 8 elements
+The diameter of the largest component is 2
+|song1| is removed from the Song database.
+There are 2 connected components
+The largest connected component has 7 elements
+The diameter of the largest component is 2
+|song2| is removed from the Song database.
+There are 2 connected components
+The largest connected component has 6 elements
+The diameter of the largest component is 3
+|song3| is removed from the Song database.
+There are 2 connected components
+The largest connected component has 6 elements
+The diameter of the largest component is 3
+|lizzie| is added to the Artist database.
+|song11| is added to the Song database.
+|song12| is added to the Song database.
+|song13| is added to the Song database.
+Song hash table size doubled.
+|song14| is added to the Song database.
+|song15| is added to the Song database.
+There are 3 connected components
+The largest connected component has 6 elements
+The diameter of the largest component is 3

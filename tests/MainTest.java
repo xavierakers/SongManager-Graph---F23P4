@@ -14,10 +14,16 @@ import student.TestCase;
 public class MainTest extends TestCase {
     /**
      * Code coverage
+     * 
+     * @throws IOException
      */
-    public void testMain() {
+    public void testMain() throws IOException {
         String[] args = new String[] { "8", "testInput.txt" };
         GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testInput_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
     }
 
 

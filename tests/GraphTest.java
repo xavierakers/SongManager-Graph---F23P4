@@ -79,59 +79,58 @@ public class GraphTest extends TestCase {
      * 
      * @throws IOException
      */
-    public void testDeleteSimpleGraph() throws IOException {
-        String[] args = new String[] { "5",
-            "testInputFiles/testDeleteSimpleGraph.txt" };
+    public void testInsertAdvancedGraph() throws IOException {
+        String[] args = new String[] { "10",
+            "testInputFiles/testInsertAdvancedGraph.txt" };
         GraphProject.main(args);
         String expected = new String(Files.readAllBytes(Paths.get(
-            "testOutputFiles/testDeleteSimpleGraph_output.txt")));
+            "testOutputFiles/testInsertAdvancedGraph_output.txt")));
 
         assertEquals(expected, systemOut().getHistory());
     }
 
 
     /**
-     * Seeing how removeEdge works
+     * 
+     * @throws IOException
      */
-    public void testGraph() {
-        GraphL graph = new GraphL();
-        graph.init(8);
-        graph.analyzeComponents();
-        System.out.printf("# of components %d%n", graph
-            .getNumConnectedComponents());
-        System.out.printf("size of largest componenet %d%n", graph
-            .getBiggestComponentCount());
-        graph.addEdge(0, 1, 1);
-        graph.addEdge(1, 0, 1);
-        graph.addEdge(0, 2, 1);
-        graph.addEdge(2, 0, 1);
-        graph.addEdge(0, 3, 1);
-        graph.addEdge(3, 0, 1);
+    public void testRemoveBasicGraph() throws IOException {
+        String[] args = new String[] { "9",
+            "testInputFiles/testRemoveBasicGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testRemoveBasicGraph_output.txt")));
 
-        graph.analyzeComponents();
-        System.out.printf("# of components %d%n", graph
-            .getNumConnectedComponents());
-        System.out.printf("size of largest componenet %d%n", graph
-            .getBiggestComponentCount());
-        graph.printAdjList();
-        graph.removeNode(1);
+        assertEquals(expected, systemOut().getHistory());
+    }
 
-        graph.printAdjList();
-        graph.analyzeComponents();
-        System.out.printf("# of components %d%n", graph
-            .getNumConnectedComponents());
-        System.out.printf("size of largest componenet %d%n", graph
-            .getBiggestComponentCount());
 
-        System.out.println("here");
-        graph.addEdge(0, graph.addNode(), 1);
+    /**
+     * 
+     * @throws IOException
+     */
+    public void testDeleteAdvancedGraph() throws IOException {
+        String[] args = new String[] { "10",
+            "testInputFiles/testDeleteAdvancedGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testDeleteAdvancedGraph_output.txt")));
 
-        graph.printAdjList();
+        assertEquals(expected, systemOut().getHistory());
+    }
 
-        System.out.printf("# of components %d%n", graph
-            .getNumConnectedComponents());
-        System.out.printf("size of largest componenet %d%n", graph
-            .getBiggestComponentCount());
 
+    /**
+     * 
+     * @throws IOException
+     */
+    public void testAdvancedPrintGraph() throws IOException {
+        String[] args = new String[] { "10",
+            "testInputFiles/testAdvancedPrintGraph.txt" };
+        GraphProject.main(args);
+        String expected = new String(Files.readAllBytes(Paths.get(
+            "testOutputFiles/testAdvancedPrintGraph_output.txt")));
+
+        assertEquals(expected, systemOut().getHistory());
     }
 }

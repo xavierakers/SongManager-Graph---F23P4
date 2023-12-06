@@ -70,16 +70,16 @@ public class Hash {
         int home = h(key, capacity);
         int step = 0;
         int index = home;
-
         while (table[index] != null) {
-            if (!table[index].equals(TOMBSTONE)) {
-                if (table[index].getKey().equals(key)) {
-                    return table[index];
-                }
+            if (!table[index].equals(TOMBSTONE) && table[index].getKey().equals(
+                key)) {
+                return table[index];
             }
             step++;
             index = (home + q(step)) % capacity;
-
+            if (step > capacity) {
+                break;
+            }
         }
         return null;
     }
@@ -98,14 +98,12 @@ public class Hash {
         int index = home;
 
         while (table[index] != null) {
-            if (table[index].getKey() != null) {
-                if (table[index].getKey().equals(key)) {
-                    Record record = table[index];
-                    table[index] = TOMBSTONE;
-                    count--;
-                    return record;
-                }
-
+            if (table[index].getKey() != null && table[index].getKey().equals(
+                key)) {
+                Record record = table[index];
+                table[index] = TOMBSTONE;
+                count--;
+                return record;
             }
             step++;
             index = (home + q(step)) % capacity;

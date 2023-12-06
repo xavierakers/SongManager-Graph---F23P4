@@ -1,0 +1,19 @@
+print graph
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+print graph
+insert Blind Lemon Jefferson<SEP>Mississippi Boweavil Blues
+print graph
+insert Blind Lemon Jefferson<SEP>long Lonesome Blues
+print graph
+insert Ma Rainey<SEP>Mississippi Boweavil Blues
+print graph
+insert Ma Rainey<SEP>Fixin' To Die Blues
+print graph
+insert xavier<SEP>Fixin' To Die Blues
+print graph
+insert xavier<SEP>song
+print graph
+remove song Mississippi Boweavil Blues
+print graph
+insert Blind Lemon Jefferson<SEP>song2
+print graph

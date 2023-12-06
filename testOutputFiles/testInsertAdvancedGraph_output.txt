@@ -1,0 +1,21 @@
+There are 0 connected components
+The largest connected component has 0 elements
+The diameter of the largest component is 0
+|Blind Lemon Jefferson| is added to the Artist database.
+|Long Lonesome Blues| is added to the Song database.
+There are 1 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
+|Ma Rainey| is added to the Artist database.
+|Ma Rainey's Black Bottom| is added to the Song database.
+There are 2 connected components
+The largest connected component has 2 elements
+The diameter of the largest component is 1
+|Long   Lonesome Blues| is added to the Song database.
+There are 2 connected components
+The largest connected component has 3 elements
+The diameter of the largest component is 2
+|long Lonesome Blues| is added to the Song database.
+There are 2 connected components
+The largest connected component has 4 elements
+The diameter of the largest component is 2

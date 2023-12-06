@@ -1,0 +1,9 @@
+print graph
+insert Blind Lemon Jefferson<SEP>Long Lonesome Blues
+print graph
+insert Ma Rainey<SEP>Ma Rainey's Black Bottom
+print graph
+insert Blind Lemon Jefferson<SEP>Long   Lonesome Blues
+print graph
+insert Blind Lemon Jefferson<SEP>long Lonesome Blues
+print graph

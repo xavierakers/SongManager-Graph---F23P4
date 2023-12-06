@@ -1,0 +1,31 @@
+print graph
+insert Blind Lemon Jefferson<SEP>song1
+insert Blind Lemon Jefferson<SEP>song2
+insert Blind Lemon Jefferson<SEP>song3
+insert Blind Lemon Jefferson<SEP>song4
+insert Blind Lemon Jefferson<SEP>song5
+insert Blind Lemon Jefferson<SEP>song6
+insert Blind Lemon Jefferson<SEP>song7
+print graph
+insert xavier<SEP>song8
+print graph
+insert zoe<SEP>song8
+print graph
+insert meegs<SEP>song8
+print graph
+insert meegs<SEP>song9
+print graph
+insert meegs<SEP>song10
+print graph
+remove song song1
+print graph
+remove song song2
+print graph
+remove song song3
+print graph
+insert lizzie<SEP>song11
+insert lizzie<SEP>song12
+insert lizzie<SEP>song13
+insert lizzie<SEP>song14
+insert lizzie<SEP>song15
+print graph

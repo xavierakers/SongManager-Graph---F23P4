@@ -47,8 +47,6 @@ public class CommandProcessor {
             while (sc.hasNextLine()) {
                 cmd = sc.nextLine().trim().split("\\s+", 2);
                 // Skips the random newlines in the input file
-                // if (!cmd[0].isEmpty()) {
-                // System.out.print(cmd[0] + " ");
                 switch (cmd[0]) {
                     case "insert":
                         param = cmd[1].trim().split("<SEP>");
@@ -62,12 +60,11 @@ public class CommandProcessor {
 
                     case "print":
                         param = cmd[1].trim().split("\\s+");
-                        switch (param[0]) {
-                            case "graph":
-                                controller.printGraph();
-                                break;
-                            default:
-                                controller.printCount(param[0]);
+                        if (param[0].equals("graph")) {
+                            controller.printGraph();
+                        }
+                        else {
+                            controller.printCount(param[0]);
                         }
                         break;
                     default:
@@ -75,7 +72,7 @@ public class CommandProcessor {
                         break;
                 }
             }
-            // }
+            //
             sc.close();
 
         }

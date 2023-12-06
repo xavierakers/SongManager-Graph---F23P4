@@ -13,7 +13,6 @@ public class Controller {
     private Hash songTable;
     private Hash artistTable;
     private GraphL graph;
-    private int totalRecords;
 
     /**
      * Constructor
@@ -26,7 +25,6 @@ public class Controller {
         artistTable = new Hash(hashSize);
         graph = new GraphL();
         graph.init(hashSize);
-        totalRecords = 0;
     }
 
 
@@ -39,61 +37,41 @@ public class Controller {
      */
     public boolean insert(String input) {
         String[] record = input.trim().split("<SEP>");
-
         String artist = record[0];
         String song = record[1];
 
-        Record artistRecord = new Record(artist, totalRecords);
-        int oldArtistThresh = artistTable.getThreshold();
-        boolean artistInserted = artistTable.insert(artistRecord);
+        int[] vertices = graph.addNode();
+        Record artistRecord = new Record(artist, vertices[0]);
+        Record songRecord = new Record(song, vertices[1]);
 
-        // Need to add check for duplicate
-        if (artistTable.getCount() > oldArtistThresh) {
-            System.out.println("Artist hash table size doubled.");
-        }
-
-        // Inserting in hash table
-        if (artistInserted) {
+        boolean artistInserted = false;
+        boolean songInserted = false;
+        if (artistTable.search(artist) == null) {
+            if (artistTable.getCount() == artistTable.getThreshold()) {
+                System.out.println("Artist hash table size doubled.");
+            }
+            artistTable.insert(artistRecord);
+            artistInserted = true;
             System.out.printf("|%s| is added to the Artist database.%n",
                 artist);
-
-            totalRecords++;
         }
 
-        if (songTable.getCount() == songTable.getThreshold()) {
-            System.out.println("Song hash table size doubled.");
-        }
-
-        Record songRecord = new Record(song, totalRecords);
-        boolean songInserted = songTable.insert(songRecord);
-        if (songInserted) {
+        if (songTable.search(song) == null) {
+            if (songTable.getCount() == songTable.getThreshold()) {
+                System.out.println("Song hash table size doubled.");
+            }
+            songTable.insert(songRecord);
+            songInserted = true;
             System.out.printf("|%s| is added to the Song database.%n", song);
-            totalRecords++;
+
         }
-        // Both artist and song were just inserted
-        if (artistInserted && songInserted) {
-            int index1 = graph.addNode();
-            int index2 = graph.addNode();
-            graph.addEdge(index1, index2, 1);
-            graph.addEdge(index1, index2, 1);
-        }
-        // Artist exists, song inserted
+
         int artistGraphIndex = artistTable.search(artist).getValue();
-        if (!artistInserted && songInserted) {
-            int newIndex = graph.addNode();
-            graph.addEdge(artistGraphIndex, newIndex, 1);
-            graph.addEdge(newIndex, artistGraphIndex, 1);
-        }
-        // Song exists, artist inserted
         int songGraphIndex = songTable.search(song).getValue();
-        if (artistInserted && !songInserted) {
-            int newIndex = graph.addNode();
-            graph.addEdge(songGraphIndex, newIndex, 1);
-            graph.addEdge(newIndex, songGraphIndex, 1);
-        }
+
         // Both exist and are already linked
-        else if (graph.hasEdge(artistGraphIndex, songGraphIndex)
-            && !artistInserted && !songInserted) {
+        if (graph.hasEdge(artistGraphIndex, songGraphIndex) && !artistInserted
+            && !songInserted) {
             System.out.printf(
                 "|%s<SEP>%s| duplicates a record already in the database.%n",
                 artist, song);
@@ -120,13 +98,11 @@ public class Controller {
     public boolean remove(String table, String param) {
         switch (table) {
             case "artist":
-                // if this artist exists
                 Record artist = artistTable.delete(param);
                 if (artist != null) {
                     graph.removeNode(artist.getValue());
                     System.out.printf(
                         "|%s| is removed from the Artist database.%n", param);
-
                     return true;
                 }
                 System.out.printf(
@@ -138,7 +114,6 @@ public class Controller {
                     graph.removeNode(song.getValue());
                     System.out.printf(
                         "|%s| is removed from the Song database.%n", param);
-
                     return true;
                 }
                 System.out.printf("|%s| does not exist in the Song database.%n",
